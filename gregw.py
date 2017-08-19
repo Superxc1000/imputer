@@ -1,6 +1,7 @@
 def gregwcal(col1, df):
         if df[col1].dtype != 'object':
             print "Wrong Type"
+            return
         import pandas as pd
         from xgboost import XGBClassifier
         target = df[col1]
