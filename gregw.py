@@ -13,6 +13,7 @@ def gregwcal(col1, df):
         pred = nex[pd.isnull(nex[col1]) == True]
         if len(pred) == 0:
             print "No Missing / NaN Data"
+            return
         y = train[col1]
         pred.drop(col1, axis = 1, inplace = True)
         train.drop(col1, axis = 1, inplace = True)    
