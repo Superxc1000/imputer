@@ -7,7 +7,6 @@ def gregwcal(col1, df):
         target = df[col1]
         column_names = list(df.columns)
         column_names.remove(col1)
-        cars = df[column_names]
         nex = pd.get_dummies(df, drop_first = True)
         nex = pd.concat([target, nex], axis = 1)
         train = nex[pd.isnull(nex[col1]) == False]
