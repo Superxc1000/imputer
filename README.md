@@ -12,7 +12,15 @@ print data
 prints 
 
 ```
-   rain  some_numeric some_string  sprinkler  wet_sidewalk
+<table style="width:100%">
+  <tr>
+    <th>rain</th>
+    <th>some_num</th> 
+    <th>some_str</th>
+    <th>sprinkler</th>
+    <th>wet_sidewalk</th>
+  </tr>
+   rain  some_num some_str  sprinkler  wet_sidewalk
 0     0           1.1           B          0             0
 1     0           NaN           A          1             1
 2     1           0.2           A          1             1
