@@ -23,7 +23,7 @@ def impute_reg(col1, df):
     pred.drop(col1, axis = 1, inplace = True) # remove y (missing info) from prediction set
     XGB = XGBRegressor()
     XGB.fit(train, y) # import and train XGB
-    for x in list(pred.index): # get predictions and place time in orginal dataframe
+    for x in list(pred.index): # get predictions and place them in orginal dataframe
         value = XGB.predict(pred.loc[[x]])
         df.loc[x, col1] = value[0]
     return df
