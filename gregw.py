@@ -15,7 +15,7 @@ def impute_reg(col1, df):
     nex = pd.concat([target, nex], axis = 1) # Concat y with x
     train = nex[pd.isnull(nex[col1]) == False] # filter for missing values
     pred = nex[pd.isnull(nex[col1]) == True]
-    if len(pred) == 0: # Check to see if anything is missing if not kick pack message.
+    if len(pred) == 0: # Check to see if anything is missing if not kick back message.
         print "No Missing / NaN Data"
         return
     y = train[col1] # create y value
