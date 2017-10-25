@@ -18,6 +18,7 @@ def impute_reg(col1, df):
     if len(pred) == 0: # Check to see if anything is missing if not kick back message.
         print "No Missing / NaN Data"
         return
+    
     y = train[col1] # create y value
     train.drop(col1, axis = 1, inplace = True) # remove y from train set
     pred.drop(col1, axis = 1, inplace = True) # remove y (missing info) from prediction set
@@ -32,6 +33,7 @@ def impute_cal(col1, df):
     if df[col1].dtype != 'object':
         print "Wrong Type"
         return
+    
     target = df[col1]
     column_names = list(df.columns)
     column_names.remove(col1)
@@ -42,6 +44,7 @@ def impute_cal(col1, df):
     if len(pred) == 0:
         print "No Missing / NaN Data"
         return
+    
     y = train[col1]
     pred.drop(col1, axis = 1, inplace = True)
     train.drop(col1, axis = 1, inplace = True)    
