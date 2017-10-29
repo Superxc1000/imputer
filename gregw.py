@@ -1,13 +1,14 @@
 import pandas as pd
 import numpy as np
-from xgboost import XGBRegressor, XGBClassifier
+from xgboost import XGBClassifier, XGBRegressor
 
-def impute_reg(col1, df):
+def impute_reg(col1, df, missing=np.nan):
+    # Change specified values to np.nan if instructed.
+    df[col1].replace(to_replace=missing, value=np.nan, inplace=True)
     # check column type, if wrong type kick back message
     if str(df[col1].dtype) not in ('float32', 'float64'):
         print "Wrong Type"
         return
-    
     column_names = list(df.columns)
     column_names.remove(col1) # remove y from dataframe
     nex = pd.get_dummies(df[column_names], drop_first = True) # Create dummy columns
@@ -29,7 +30,10 @@ def impute_reg(col1, df):
         df.loc[x, col1] = value[0]
     return df
 
-def impute_cal(col1, df):
+def impute_cal(col1, df, missing=np.nan):
+    # Change specified values to np.nan if instructed.
+    df[col1].replace(to_replace=missing, value=np.nan, inplace=True)
+    # check column type, if wrong type kick back message.
     if df[col1].dtype != 'object':
         print "Wrong Type"
         return
@@ -61,6 +65,25 @@ def dataset():
         'sprinkler': [0, 1, 1, 0, 1, 0, 1, -1],
         'wet_sidewalk': [0, 1, 1, 1, 1, 1, -1, 0],
         'some_num': [1.1, np.NaN, 0.2, -0.4, 0.1, 0.2, 0.0, 3.9],
+        'some_str': ['B', 'A', 'A', 'A', 'A', 'A', 'A', np.NaN]
+    })
+    return data
+def dataset():
+    data = pd.DataFrame({
+        'rain': [0, 0, 1, 1, 1, -1, 0, -1],
+        'sprinkler': [0, 1, 1, 0, 1, 0, 1, -1],
+        'wet_sidewalk': [0, 1, 1, 1, 1, 1, -1, 0],
+        'some_num': [1.1, np.NaN, 0.2, -0.4, 0.1, 0.2, 0.0, 3.9],
+        'some_str': ['B', 'A', 'A', 'A', 'A', 'A', 'A', np.NaN]
+    })
+    return data
+
+def dataset1():
+    data = pd.DataFrame({
+        'rain': [0, 0, 1, 1, 1, -1, 0, -1],
+        'sprinkler': [0, 1, 1, 0, 1, 0, 1, -1],
+        'wet_sidewalk': [0, 1, 1, 1, 1, 1, -1, 0],
+        'some_num': [1.1, -10, 0.2, -0.4, 0.1, 0.2, 0.0, 3.9],
         'some_str': ['B', 'A', 'A', 'A', 'A', 'A', 'A', np.NaN]
     })
     return data
