@@ -42,7 +42,7 @@ def impute_cal(col1, df, missing=np.nan):
         df[col1].replace(to_replace=missing, value=np.nan, inplace=True)
         
     # check column type, if wrong type kick back message.
-    if str(df[col1].dtype) not in  ['object', 'category']:
+    if str(df[col1].dtype) not in ['object', 'category']:
         print "Wrong Type"
         return
     
