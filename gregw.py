@@ -28,7 +28,7 @@ def impute_reg(col1, df, missing=np.nan):
     y = train[col1] # create y value
     train.drop(col1, axis = 1, inplace = True) # remove y from train set
     pred.drop(col1, axis = 1, inplace = True) # remove y (missing info) from prediction set
-    XGB = XGBRegressor()
+    XGB = XGBRegressor(n_jobs=-1)
     XGB.fit(train, y) # import and train XGB
     for x in list(pred.index): # get predictions and place them in orginal dataframe
         value = XGB.predict(pred.loc[[x]])
@@ -60,7 +60,7 @@ def impute_cal(col1, df, missing=np.nan):
     y = train[col1]
     pred.drop(col1, axis = 1, inplace = True)
     train.drop(col1, axis = 1, inplace = True)    
-    XGB = XGBClassifier()
+    XGB = XGBClassifier(n_jobs=-1)
     XGB.fit(train, y)
     for x in list(pred.index):
         value = XGB.predict(pred.loc[[x]])
